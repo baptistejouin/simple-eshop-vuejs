@@ -5,15 +5,11 @@
 	<router-view></router-view>
 </template>
 
-<style lang="sass">
-@import '@/assets/styles/global'
-</style>
-
 <script>
 import Navbar from '@/components/Navbar.vue';
 
 export default {
-	name: 'Home',
+	name: 'App',
 	components: {
 		Navbar
 	},
