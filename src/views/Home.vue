@@ -3,10 +3,10 @@
 		<h2 class="text-xl font-bold">Recommandé pour vous</h2>
 		<p class="font-medium text-gray-400">Basé sur vos recherches récentes et vos articles aimée.</p>
 		<ul class="flex space-x-3 mt-8 mb-4">
-			<Filter v-for="ProductCardItems in filterItems" :key="ProductCardItems.label" :active="ProductCardItems.active">{{ ProductCardItems.label }}</Filter>
+			<Filter v-for="item in filterItems" :key="item.label" :filter="item"/>
 		</ul>
 		<ul class="flex space-x-5">
-			<ProductCard v-for="item in ProductCardItems" :key="item.id" :name="item.name" :price="item.price" :img="item.img" :liked="item.liked" :handleLike="handleLike" :id="item.id"></ProductCard>
+			<ProductCard v-for="item in ProductCardItems" :key="item.id" :product="item" :handleLike="handleLike"/>
 		</ul>
 	</main>
 </template>
@@ -14,6 +14,9 @@
 <script>
 import Filter from '@/components/Home/Filter.vue';
 import ProductCard from '@/components/Home/ProductCard.vue';
+
+import img00 from '@/assets/img/product/00-0.webp';
+import img01 from '@/assets/img/product/01-0.webp';
 
 export default {
 	name: 'Home',
@@ -51,14 +54,14 @@ export default {
 					id: 1,
 					name: 'Winter Coat',
 					price: 300,
-					img: '/img/winter-coat.jpg',
+					img: img00,
 					liked: true,
 				},
 				{
 					id: 2,
-					name: 'Winter Coat',
+					name: 'Classic Shirt',
 					price: 300,
-					img: '/img/winter-coat.jpg',
+					img: img01,
 					liked: false,
 				}
 			]
