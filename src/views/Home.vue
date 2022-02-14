@@ -3,10 +3,11 @@
 		<h2 class="text-xl font-bold">Recommandé pour vous</h2>
 		<p class="font-medium text-gray-400">Basé sur vos recherches récentes et vos articles aimée.</p>
 		<ul class="flex space-x-3 mt-8 mb-4">
-			<Filter v-for="(item, i) in filterItems" :key="i" :filter="item" />
+			<Filter v-for="item in getCategories" :key="item.id" :categorie="item" />
 		</ul>
 		<ul class="flex space-x-5">
-			<ProductCard v-for="item in getProducts" :key="item.id" :product="item"/>
+			<li v-if="getProducts(getCurrentCategorie).length === 0" class="text-gray-300 text-">Aucun articles à afficher.</li>
+			<ProductCard v-else v-for="item in getProducts(getCurrentCategorie)" :key="item.id" :product="item"/>
 		</ul>
 	</main>
 </template>
@@ -23,34 +24,8 @@ export default {
 		Filter,
 		ProductCard
 	},
-	data() {
-		return {
-			filterItems: [
-				{
-					label: 'Afficher tout',
-					active: true
-				},
-				{
-					label: 'Vestes',
-					active: false
-				},
-				{
-					label: 'Pantalons',
-					active: false
-				},
-				{
-					label: 'Chemises',
-					active: false
-				},
-				{
-					label: 'Sacs',
-					active: false
-				}
-			]
-		};
-	},
 	computed: {
-		...mapGetters(['getProducts'])
+		...mapGetters(['getProducts', 'getCategories', 'getCurrentCategorie']),
 	}
 };
 </script>
