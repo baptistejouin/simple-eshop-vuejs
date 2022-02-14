@@ -3,10 +3,10 @@
 		<h2 class="text-xl font-bold">Recommandé pour vous</h2>
 		<p class="font-medium text-gray-400">Basé sur vos recherches récentes et vos articles aimée.</p>
 		<ul class="flex space-x-3 mt-8 mb-4">
-			<Filter v-for="item in filterItems" :key="item.label" :filter="item"/>
+			<Filter v-for="(item, i) in filterItems" :key="i" :filter="item" />
 		</ul>
 		<ul class="flex space-x-5">
-			<ProductCard v-for="item in ProductCardItems" :key="item.id" :product="item" :handleLike="handleLike"/>
+			<ProductCard v-for="item in getProducts" :key="item.id" :product="item"/>
 		</ul>
 	</main>
 </template>
@@ -15,14 +15,13 @@
 import Filter from '@/components/Home/Filter.vue';
 import ProductCard from '@/components/Home/ProductCard.vue';
 
-import img00 from '@/assets/img/product/00-0.webp';
-import img01 from '@/assets/img/product/01-0.webp';
+import { mapGetters } from 'vuex';
 
 export default {
 	name: 'Home',
 	components: {
 		Filter,
-		ProductCard,
+		ProductCard
 	},
 	data() {
 		return {
@@ -47,32 +46,11 @@ export default {
 					label: 'Sacs',
 					active: false
 				}
-			],
-			// TODO : Retrieve data from a JSON file
-			ProductCardItems: [
-				{
-					id: 1,
-					name: 'Winter Coat',
-					price: 300,
-					img: img00,
-					liked: true,
-				},
-				{
-					id: 2,
-					name: 'Classic Shirt',
-					price: 300,
-					img: img01,
-					liked: false,
-				}
 			]
-		}
+		};
 	},
-	methods: {
-		handleLike(id) {
-			// TODO : Manage states using Vuex.
-			const product = this.ProductCardItems.find(p => id === p.id)
-			product.liked = !product.liked
-		}
+	computed: {
+		...mapGetters(['getProducts'])
 	}
-}
+};
 </script>
