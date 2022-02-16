@@ -7,7 +7,7 @@
 		</ul>
 		<ul class="flex space-x-5">
 			<li v-if="getProducts(getCurrentCategorie).length === 0" class="text-gray-300 text-">Aucun articles à afficher.</li>
-			<ProductCard v-else v-for="item in getProducts(getCurrentCategorie)" :key="item.id" :product="item"/>
+			<ProductCard v-else v-for="item in getProducts(getCurrentCategorie)" :key="item.id" :product="item" />
 		</ul>
 	</main>
 </template>
@@ -25,7 +25,10 @@ export default {
 		ProductCard
 	},
 	computed: {
-		...mapGetters(['getProducts', 'getCategories', 'getCurrentCategorie']),
+		...mapGetters(['getProducts', 'getCategories', 'getCurrentCategorie'])
+	},
+	mounted() {
+		this.$store.dispatch('updateLikedFromLocalStorage');
 	}
 };
 </script>
