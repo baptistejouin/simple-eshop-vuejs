@@ -36,6 +36,9 @@ const store = createStore({
 		]
 	},
 	getters: {
+		getProduct: (state) => (id) => {
+			return state.products.find(p => p.id === id)
+		},
 		getProducts: (state) => (categorie) => {
 			if (categorie !== 1) return state.products.filter((p) => categorie === p.categorie)
 			return state.products
