@@ -1,8 +1,14 @@
 <template>
-	<div class="container mx-auto">
-		<h2>{{ product.name }}</h2>
-		<p>{{ product.price }} €</p>
-		<img :src="product.img" alt="" />
+	<div class="container mx-auto mt-[32px]">
+		<div class="grid grid-cols-12 gap-4">
+			<div class="col-span-6">
+				<h2 class="text-xl">{{ product.name }}</h2>
+				<p>{{ product.price }} €</p>
+			</div>
+			<div class="col-span-6">
+				<img class="max-w-lg border rounded-xl p-3" :src="product.img" alt="" />
+			</div>
+		</div>
 	</div>
 </template>
 

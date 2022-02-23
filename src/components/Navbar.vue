@@ -12,13 +12,20 @@
 			</li>
 		</ul>
 	</nav>
+	<CartSidebar :active="shopCartIsActive" :handleShopCart="handleShopCart" />
 </template>
 
 <script>
+import CartSidebar from '@/components/CartSidebar.vue';
+
 export default {
+	components: {
+		CartSidebar
+	},
 	name: 'Navbar',
 	data() {
 		return {
+			shopCartIsActive: false,
 			navItems: [
 				{
 					path: '#',
@@ -29,7 +36,7 @@ export default {
 				{
 					path: '#',
 					icon: 'cart',
-					methods: this.openCart,
+					methods: this.handleShopCart,
 					label: 'Your cart'
 				},
 				{
@@ -40,8 +47,8 @@ export default {
 		};
 	},
 	methods: {
-		openCart() {
-			alert('openCart');
+		handleShopCart() {
+			this.shopCartIsActive = !this.shopCartIsActive;
 		},
 		handleSearch() {
 			alert('handleSearch');
