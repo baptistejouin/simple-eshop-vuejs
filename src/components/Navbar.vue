@@ -1,22 +1,20 @@
 <template>
 	<nav class="flex px-[84px] py-[32px] items-center border-b">
-		<router-link :to="{ name: 'Home' }"><h1 class="text-5xl font-bold">A.P.C</h1></router-link>
+		<h1 class="text-5xl font-bold"><router-link :to="{ name: 'Home' }">A.P.C</router-link></h1>
 		<ul class="flex ml-auto space-x-3">
 			<li v-for="item in navItems" :key="item.name">
-				<div v-if="item.methods" @click="item.methods" :aria-label="item.label">
-					<span :class="`icon-${item.icon}`" class="border rounded-full p-3 text-[24px] hover:bg-gray-50 cursor-pointer"></span>
-				</div>
+				<span v-if="item.methods" @click="item.methods" :aria-label="item.label" :class="`icon-${item.icon}`" class="border rounded-full p-3 text-[24px] hover:bg-gray-50 cursor-pointer"></span>
 				<router-link v-else :to="{ path: item.path }">
 					<span :class="`icon-${item.icon}`" class="border rounded-full p-3 text-[24px] hover:bg-gray-50"></span>
 				</router-link>
 			</li>
 		</ul>
 	</nav>
-	<CartSidebar :active="shopCartIsActive" :handleShopCart="handleShopCart" />
+	<CartSidebar :active="shopCartIsActive" @toggleShopCart="toggleShopCart" />
 </template>
 
 <script>
-import CartSidebar from '@/components/CartSidebar.vue';
+import CartSidebar from '@/components/Sidebar/CartSidebar.vue';
 
 export default {
 	components: {
@@ -30,13 +28,13 @@ export default {
 				{
 					path: '#',
 					icon: 'search',
-					methods: this.handleSearch,
+					methods: this.toggleSearch,
 					label: 'Search bar'
 				},
 				{
 					path: '#',
 					icon: 'cart',
-					methods: this.handleShopCart,
+					methods: this.toggleShopCart,
 					label: 'Your cart'
 				},
 				{
@@ -47,10 +45,10 @@ export default {
 		};
 	},
 	methods: {
-		handleShopCart() {
+		toggleShopCart() {
 			this.shopCartIsActive = !this.shopCartIsActive;
 		},
-		handleSearch() {
+		toggleSearch() {
 			alert('handleSearch');
 		}
 	}
