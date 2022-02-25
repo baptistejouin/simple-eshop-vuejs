@@ -1,7 +1,7 @@
 <template>
 	<li>
 		<router-link :to="{ path: `/product/${product.id}` }">
-			<div class="h-[420px] border rounded-xl p-3 relative overflow-hidden bg-center bg-no-repeat bg-contain" :style="`background-image: url(${product.img})`">
+			<div class="h-[420px] border rounded-xl p-3 relative overflow-hidden bg-center bg-no-repeat bg-contain" :style="`background-image: url(${product.img[0]})`">
 				<span :class="`icon-${isLiked ? 'liked' : 'like'}`" class="absolute top-3 right-3 text-[32px] text-gray-500 cursor-pointer" @click.prevent="setLike(product.id)"></span>
 			</div>
 		</router-link>

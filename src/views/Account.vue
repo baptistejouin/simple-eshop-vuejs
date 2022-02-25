@@ -1,5 +1,5 @@
 <template>
-	<main class="px-[84px] pt-[32px]">
+	<main class="container mx-auto pt-8">
 		<h2 class="text-xl font-bold">My Account</h2>
 	</main>
 </template>
