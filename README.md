@@ -4,7 +4,7 @@ Développement de la partie frontend d'une application de type e-commerce avec V
 
 ## Objectifs généraux
 
-- ✅ Construction de [la maquette sur Figma](<(https://www.figma.com/file/oDbFGk4bk9xg2QZ3MNLtRg/Vuejs-shop-entrainement?node-id=0%3A1)>)
+- ✅ Construction de [la maquette sur Figma](https://www.figma.com/file/oDbFGk4bk9xg2QZ3MNLtRg/Vuejs-shop-entrainement?node-id=0%3A1)
 - ✅ Initialisation de l'application
 - ✅ Définition de la structure globale des fichiers et configuration des libraires
 - ✅ Définition de toutes les routes
