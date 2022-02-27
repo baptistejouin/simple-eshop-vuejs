@@ -1,0 +1,12 @@
+/* Global style */
+body {
+	height: 100vh;
+}
+#app {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+main {
+	flex-grow: 1;
+}
