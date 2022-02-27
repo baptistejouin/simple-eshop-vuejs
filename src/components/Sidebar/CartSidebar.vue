@@ -15,7 +15,10 @@
 							<ProductSidebar v-for="product in getCart" :key="product.id" :product="product" />
 						</template>
 					</div>
-					<div class="pt-8 px-8 border-t border-neutral-700">Total: {{ getCartTotal.price }} €</div>
+					<div class="flex justify-between items-center pt-8 px-8 border-t border-neutral-700">
+						<div>Total: {{ getCartTotal.price.toFixed(2) }} €</div>
+						<button class="bg-neutral-700 rounded-lg px-4 py-2">Commander</button>
+					</div>
 				</aside>
 			</Transition>
 			<Transition name="bg-transition" enter-active-class="opacity-0" leave-active-class="opacity-0">
