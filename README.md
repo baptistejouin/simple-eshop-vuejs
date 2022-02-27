@@ -30,8 +30,8 @@ Développement de la partie frontend d'une application de type e-commerce avec V
 
 ## Aperçu
 
-![Screeshot de la page d'accueil](https://imgur.com/a/s4ZM2Ni)
-![Screeshot de la page du panier et de la page produit](https://imgur.com/a/D4nTRx4)
+![Screeshot de la page d'accueil](https://i.imgur.com/nL8Qqfv.png)
+![Screeshot de la page du panier et de la page produit](https://i.imgur.com/DOY4075.png)
 
 ## La stack
 
