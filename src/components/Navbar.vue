@@ -4,9 +4,9 @@
 			<h1 class="text-5xl font-bold"><router-link :to="{ name: 'Home' }" aria-label="go to homepage">A.P.C</router-link></h1>
 			<ul class="flex grow justify-end gap-3">
 				<li>
-					<router-link :to="{ path: '#' }" aria-label="search a product by name" @click="toggleSearch">
+					<button aria-label="search a product by name" @click="toggleSearch">
 						<span class="icon-search border rounded-full p-3 text-2xl hover:bg-gray-50 cursor-pointer"></span>
-					</router-link>
+					</button>
 				</li>
 				<li class="relative">
 					<button aria-label="search a product by name" @click="toggleCart">
