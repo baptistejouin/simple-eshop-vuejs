@@ -1,11 +1,11 @@
 <template>
 	<Teleport to="#app">
-		<div :class="active ? '' : 'invisible'" :aria-hidden="!active" class="visible transition-[visibility] delay-50 fixed inset-0 z-10">
+		<div :class="active ? '' : 'invisible'" :aria-hidden="!active" class="transition-[visibility] delay-50 fixed inset-0 z-10">
 			<Transition name="cart-transition" enter-active-class="translate-x-full" leave-active-class="translate-x-full">
 				<aside v-show="active" class="transition-transform duration-50 ease-out w-full h-full bg-black ml-auto text-white py-8 flex flex-col justify-between sm:max-w-[450px]">
 					<div class="pb-8 px-8 border-b border-neutral-700 flex justify-between items-center">
 						<h2 class="text-xl font-bold">Mon panier</h2>
-						<button @click="$emit('toggleShopCart')">
+						<button aria-label="close shopping cart" @click="$emit('toggleCart')" @keydown.esc="$emit('toggleCart')" id="closeCartPanel">
 							<span class="icon icon-close text-3xl"></span>
 						</button>
 					</div>
@@ -16,8 +16,8 @@
 						</template>
 					</div>
 					<div class="flex justify-between items-center pt-8 px-8 border-t border-neutral-700">
-						<div>Total: {{ getCartTotal.price.toFixed(2) }} €</div>
-						<button class="bg-neutral-700 rounded-lg px-4 py-2">Commander</button>
+						<div aria-label="total price">Total: {{ getCartTotal.price.toFixed(2) }} €</div>
+						<button class="bg-neutral-700 rounded-lg px-4 py-2" aria-label="finalize the order">Commander</button>
 					</div>
 				</aside>
 			</Transition>
