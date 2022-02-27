@@ -28,6 +28,11 @@ Développement de la partie frontend d'une application de type e-commerce avec V
 - ✅ Possibilité de trier par catégorie sur la page d'accueil
 - Possibilité de chercher un produit par son nom (search)
 
+## Aperçu
+
+![Screeshot de la page d'accueil](https://imgur.com/a/s4ZM2Ni)
+![Screeshot de la page du panier et de la page produit](https://imgur.com/a/D4nTRx4)
+
 ## La stack
 
 [Vue 3](https://v3.vuejs.org/) + [Vuex](https://vuex.vuejs.org/) + [Vue-Router](https://router.vuejs.org/) + [Vite](https://vitejs.dev/) + [Tailwind](https://tailwindcss.com/docs/guides/vite)
