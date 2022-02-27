@@ -8,8 +8,8 @@ function updateLocalStorage(like) {
 
 const store = createStore({
 	state: {
-		currentProduct: {},
 		currentCategorie: 1,
+		cart: [],
 		products,
 		liked: [],
 		categories: [
@@ -48,12 +48,23 @@ const store = createStore({
 		},
 		getCurrentCategorie(state) {
 			return state.currentCategorie
+		},
+		getCart(state) {
+			return state.cart
+		},
+		getCartTotal(state) {
+			let total = { price: 0, product: 0 }
+			state.cart.forEach(item => {
+				total.price += item.quantity * item.price
+				total.product += item.quantity
+			})
+			return total
 		}
 	},
 	mutations: {
 		setLike(state, product) {
 			const item = state.liked.find((p) => p === product.id)
-			if (item) state.liked.splice(state.liked.indexOf(product.id), 1)
+			if (item) state.liked.splice(state.liked.findIndex(p => p === product.id), 1)
 			else state.liked.push(product.id)
 			updateLocalStorage(state.liked)
 		},
@@ -65,18 +76,51 @@ const store = createStore({
 			if (likedProducts) {
 				state.liked = JSON.parse(likedProducts)
 			}
+		},
+		addToCart(state, product) {
+			const item = state.cart.find((p) => p.id === product.id)
+			if (item) {
+				item.quantity++
+			} else {
+				product.quantity = 1
+				state.cart.push(product)
+			}
+		},
+		removeOneToCart(state, product) {
+			const item = state.cart.find((p) => p.id === product.id)
+
+			if (item.quantity <= 1) {
+				this.commit('removeToCart', product)
+			} else {
+				item.quantity--
+			}
+		},
+		removeToCart(state, product) {
+			const item = state.cart.find((p) => p.id === product.id)
+
+			if (item) state.cart.splice(state.cart.findIndex(p => p.id === product.id), 1)
 		}
+
 	},
 	actions: {
 		setLike({ commit, state }, productId) {
 			const product = state.products.find((p) => productId === p.id)
 			commit('setLike', product)
 		},
-		selectCategorie(context, categorieId) {
-			context.commit('selectCategorie', categorieId)
+		selectCategorie({ commit }, categorieId) {
+			commit('selectCategorie', categorieId)
 		},
-		updateLikedFromLocalStorage(context) {
-			context.commit('updateLikedFromLocalStorage')
+		updateLikedFromLocalStorage({ commit }) {
+			commit('updateLikedFromLocalStorage')
+		},
+		addToCart({ commit }, product) {
+			commit('addToCart', product)
+		},
+		removeOneToCart({ commit }, product) {
+			commit('removeOneToCart', product)
+		},
+		removeToCart({ commit }, product) {
+			commit('removeToCart', product)
 		}
 	}
 })

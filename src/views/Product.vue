@@ -19,7 +19,7 @@
 				</div>
 				<h3 class="text-lg font-semibold mt-4">{{ product.price.toFixed(2) }} €</h3>
 				<div class="flex flex-col gap-4 mt-12">
-					<button class="bg-black text-white py-3 rounded-2xl font-semibold">Ajouter au panier</button>
+					<button class="bg-black text-white py-3 rounded-2xl font-semibold" @click="addToCart(product)">Ajouter au panier</button>
 					<button class="bg-neutral-200 text-black py-3 rounded-2xl font-semibold">Réserver en magasin</button>
 				</div>
 			</div>
@@ -54,7 +54,7 @@ export default {
 		}
 	},
 	methods: {
-		...mapActions(['setLike'])
+		...mapActions(['setLike', 'addToCart'])
 	}
 };
 </script>

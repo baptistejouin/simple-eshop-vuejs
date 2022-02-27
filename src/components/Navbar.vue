@@ -2,18 +2,28 @@
 	<nav class="flex px-[84px] py-[32px] items-center border-b">
 		<h1 class="text-5xl font-bold"><router-link :to="{ name: 'Home' }">A.P.C</router-link></h1>
 		<ul class="flex ml-auto space-x-3">
-			<li v-for="item in navItems" :key="item.name">
-				<span v-if="item.methods" @click="item.methods" :aria-label="item.label" :class="`icon-${item.icon}`" class="border rounded-full p-3 text-[24px] hover:bg-gray-50 cursor-pointer"></span>
-				<router-link v-else :to="{ path: item.path }">
-					<span :class="`icon-${item.icon}`" class="border rounded-full p-3 text-[24px] hover:bg-gray-50"></span>
+			<li>
+				<router-link :to="{ path: '#' }">
+					<span class="icon-search border rounded-full p-3 text-[24px] hover:bg-gray-50 cursor-pointer" @click="toggleSearch"></span>
+				</router-link>
+			</li>
+			<li class="relative">
+				<span class="icon-cart border rounded-full p-3 text-[24px] hover:bg-gray-50 cursor-pointer" @click="toggleCart"></span>
+				<span class="translate-x-1/2 -translate-y-1/2 absolute text-xs -top-1 right-0 rounded-full px-2 py-1 bg-gray-200">{{ getCartTotal.product }}</span>
+			</li>
+			<li>
+				<router-link :to="{ path: '/account' }">
+					<span class="icon-account border rounded-full p-3 text-[24px] hover:bg-gray-50 cursor-pointer"></span>
 				</router-link>
 			</li>
 		</ul>
 	</nav>
-	<CartSidebar :active="shopCartIsActive" @toggleShopCart="toggleShopCart" />
+	<CartSidebar :active="cartIsActive" @toggleCart="toggleCart" />
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import CartSidebar from '@/components/Sidebar/CartSidebar.vue';
 
 export default {
@@ -23,34 +33,19 @@ export default {
 	name: 'Navbar',
 	data() {
 		return {
-			shopCartIsActive: false,
-			navItems: [
-				{
-					path: '#',
-					icon: 'search',
-					methods: this.toggleSearch,
-					label: 'Search bar'
-				},
-				{
-					path: '#',
-					icon: 'cart',
-					methods: this.toggleShopCart,
-					label: 'Your cart'
-				},
-				{
-					path: '/account',
-					icon: 'account'
-				}
-			]
+			cartIsActive: false
 		};
 	},
 	methods: {
-		toggleShopCart() {
-			this.shopCartIsActive = !this.shopCartIsActive;
+		toggleCart() {
+			this.cartIsActive = !this.cartIsActive;
 		},
 		toggleSearch() {
 			alert('handleSearch');
 		}
+	},
+	computed: {
+		...mapGetters(['getCartTotal'])
 	}
 };
 </script>
