@@ -11,14 +11,14 @@ Développement de la partie frontend d'une application de type e-commerce avec V
 - ✅ Création des components et views
 - ✅ Construction de la logique des composants
 - Configuration du thème Tailwind
-- Stylisation avec Tailwind (avec responsive)
+- ✅ Stylisation avec Tailwind (avec responsive)
 - ✅ Gérer les états avec VueX
 
 ## Objectifs de l'app
 
 - ✅ Récupération des produits depuis un fichier JSON
 - ✅ Ajouter en favori des produits (en session storage)
-- Ajouter au panier (en session storage)
+- ✅ Ajouter au panier (en session storage)
 - ✅ Panier interactif et fonctionnel
 - ✅ Plusieurs page avec Vue-router
   - ✅ Accueil: "/"
