@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/22b8335e-2954-43b8-b872-2d8276089c7d/deploy-status)](https://app.netlify.com/sites/simple-eshop-vuejs/deploys)
+
 # Vue 3 + Vite + Tailwind
 
 Développement de la partie frontend d'une application de type e-commerce avec Vuejs. Cet exercice est réalisé afin de développer mes compétences sur ce framework ainsi que me familiariser avec Tailwind, framework css puissant, moderne et flexible.
